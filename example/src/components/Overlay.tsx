@@ -3,17 +3,22 @@ import { Linking, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Colors } from '../theme';
 import { OverlayType } from './types';
 
-const Overlay = ({ item }: OverlayType) => (
-  <TouchableOpacity
-    style={styles.overlayView}
-    onPress={() => {
-      if (item.link) {
-        Linking.openURL(item.link);
-      }
-    }}>
-    <Text style={styles.overlayText}>View More...</Text>
-  </TouchableOpacity>
-);
+const Overlay = ({
+  item: { link, previewLink = "View More ...", }
+}: OverlayType) => {
+  if (link) {
+    <TouchableOpacity
+      style={styles.overlayView}
+      onPress={() => {
+        if (link) {
+          Linking.openURL(link);
+        }
+      }}>
+      <Text style={styles.overlayText}>{previewLink}</Text>
+    </TouchableOpacity>;
+  }
+  return null;
+};
 
 export default Overlay;
 

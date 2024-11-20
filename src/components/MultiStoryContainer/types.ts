@@ -1,11 +1,11 @@
 import type { ViewToken } from 'react-native';
 import type { SharedValue } from 'react-native-reanimated';
-import type { GestureHandlerEvent } from 'react-native-reanimated/lib/typescript/reanimated2/hook';
 import type {
   StoriesType,
   StoryContainerProps,
   StoryType,
 } from '../StoryView/types';
+import type { GestureHandlerEvent } from 'react-native-reanimated/lib/typescript/hook';
 
 export enum TransitionMode {
   Default,

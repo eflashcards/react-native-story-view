@@ -1,10 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {
-  Linking,
   Modal,
   SafeAreaView,
-  Text,
-  TouchableOpacity,
   View
 } from 'react-native';
 import {

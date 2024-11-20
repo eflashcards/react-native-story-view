@@ -10,7 +10,9 @@ export interface HeaderProps extends Partial<CallbackProps>, UserProps {
   multiStoryRef?: RefObject<MultiStoryRef> | null;
 }
 
-export interface FooterProps extends Partial<CallbackProps> {}
+export interface FooterProps extends Partial<CallbackProps> { }
+
+export interface GradientProps extends Partial<CallbackProps> { }
 
 export interface OverlayType {
   item: StoryType;

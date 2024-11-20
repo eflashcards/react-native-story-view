@@ -6,6 +6,7 @@ import { Colors, Metrics } from '../../theme';
 import ProgressiveImage from './ProgressiveImage';
 import styles from './styles';
 import { StoryViewProps, StroyTypes } from './types';
+import GradientBackground from './GradientBackground';
 
 const BUFFER_TIME = 1000 * 60;
 
@@ -13,6 +14,7 @@ const StoryView = (props: StoryViewProps) => {
   const [loading, setLoading] = useState(true);
   const [buffering, setBuffering] = useState(true);
   const source = props?.stories?.[props?.progressIndex];
+
   const videoRef = useRef<Video>(null);
   const videoData = useRef<OnLoadData>();
   const isCurrentIndex = props?.index === props?.storyIndex;
@@ -42,64 +44,78 @@ const StoryView = (props: StoryViewProps) => {
 
   const { height, width } = useWindowDimensions();
 
-  return (
-    <View style={[styles.divStory, { height, width }]} ref={props?.viewRef}>
-      {source?.type === StroyTypes.Image ? (
+  const renderContent = () => {
+    if (source?.type === StroyTypes.GradientBackground && source?.gradient) {
+      return <GradientBackground {...source?.gradient} />;
+    }
+
+    if (source?.type === StroyTypes.Image) {
+      return (
         <ProgressiveImage
           viewStyle={props?.imageStyle ?? styles.imgStyle}
           imgSource={{ uri: source.url ?? '' }}
           thumbnailSource={{ uri: source.url ?? '' }}
           onImageLoaded={props.onImageLoaded}
         />
-      ) : (
-        isCurrentIndex && (
-          <>
-            <Video
-              ref={videoRef}
-              resizeMode="contain"
-              paused={props.pause || loading}
-              source={{
-                uri: convertToProxyURL({
-                  url: source?.url!,
-                }),
-              }}
-              onEnd={props?.onVideoEnd}
-              onError={(_error: any) => {
-                setLoading(false);
-              }}
-              onProgress={data => {
-                if (isCurrentIndex) {
-                  props?.onVideoProgress?.(data);
-                }
-              }}
-              bufferConfig={{
-                minBufferMs: BUFFER_TIME,
-                bufferForPlaybackMs: BUFFER_TIME,
-                bufferForPlaybackAfterRebufferMs: BUFFER_TIME,
-              }}
-              onBuffer={onBuffer}
-              onLoadStart={onLoadStart}
-              onLoad={(item: OnLoadData) => {
-                videoData.current = item;
-                !Metrics.isIOS && loadVideo();
-              }}
-              onReadyForDisplay={loadVideo}
-              style={styles.contentVideoView}
-              {...props?.videoProps}
+      );
+    }
+
+    if (source?.type === StroyTypes.Video && isCurrentIndex) {
+      return (
+        <>
+          <Video
+            ref={videoRef}
+            resizeMode="contain"
+            paused={props.pause || loading}
+            source={{
+              uri: convertToProxyURL({
+                url: source?.url!,
+              }),
+            }}
+            onEnd={props?.onVideoEnd}
+            onError={(_error: any) => {
+              setLoading(false);
+            }}
+            onProgress={data => {
+              if (isCurrentIndex) {
+                props?.onVideoProgress?.(data);
+              }
+            }}
+            bufferConfig={{
+              minBufferMs: BUFFER_TIME,
+              bufferForPlaybackMs: BUFFER_TIME,
+              bufferForPlaybackAfterRebufferMs: BUFFER_TIME,
+            }}
+            onBuffer={onBuffer}
+            onLoadStart={onLoadStart}
+            onLoad={(item: OnLoadData) => {
+              videoData.current = item;
+              !Metrics.isIOS && loadVideo();
+            }}
+            onReadyForDisplay={loadVideo}
+            style={styles.contentVideoView}
+            {...props?.videoProps}
+          />
+          {(loading || buffering) && props?.showSourceIndicator && (
+            <ActivityIndicator
+              animating
+              pointerEvents="none"
+              color={Colors.loaderColor}
+              size="small"
+              style={styles.loaderView}
+              {...props?.sourceIndicatorProps}
             />
-            {(loading || buffering) && props?.showSourceIndicator && (
-              <ActivityIndicator
-                animating
-                pointerEvents="none"
-                color={Colors.loaderColor}
-                size="small"
-                style={styles.loaderView}
-                {...props?.sourceIndicatorProps}
-              />
-            )}
-          </>
-        )
-      )}
+          )}
+        </>
+      );
+    }
+
+    return null;
+  };
+
+  return (
+    <View style={[styles.divStory, { height, width }]} ref={props?.viewRef}>
+      {renderContent()}
     </View>
   );
 };
