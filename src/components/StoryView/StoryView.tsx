@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, useWindowDimensions, View } from 'react-native';
-import Video, { OnBufferData, OnLoadData, VideoRef } from 'react-native-video';
+import Video, {
+  type OnBufferData,
+  type OnLoadData,
+  type VideoRef,
+} from 'react-native-video';
 import convertToProxyURL from 'react-native-video-cache-control';
 import { Colors, Metrics } from '../../theme';
 import ProgressiveImage from './ProgressiveImage';
 import styles from './styles';
-import { StoryViewProps, StroyTypes } from './types';
+import { StroyTypes, type StoryViewProps } from './types';
 import GradientBackground from './GradientBackground';
 
 const BUFFER_TIME = 1000 * 60;
