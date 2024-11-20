@@ -1,6 +1,7 @@
 const mock = jest.requireMock('react-native-reanimated');
 const mockGestureHandler = jest.requireMock('react-native-gesture-handler');
 
+jest.mock('react-native-linear-gradient', () => 'LinearGradient');
 jest.mock('react-native-video', () => 'Video');
 
 jest.mock('react-native-video-cache-control', () => ({
