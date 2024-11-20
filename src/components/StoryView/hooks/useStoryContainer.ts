@@ -18,9 +18,9 @@ import { Colors, Metrics } from '../../../theme';
 import styles from '../styles';
 import {
   ClickPosition,
+  StoryContainerProps,
   StoryMode,
-  type StoryContainerProps,
-  type StroyTypes,
+  StroyTypes,
 } from '../types';
 
 const useStoryContainer = (
