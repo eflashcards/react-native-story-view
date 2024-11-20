@@ -591,7 +591,7 @@ Pass any custom overlay view in the story view, which will be visible when the s
 > | headerViewProps          |    {}     | ViewProps                                                  | Header view wrapper props                                                        |
 > | footerViewProps          |    {}     | ViewProps                                                  | Footer view wrapper props                                                        |
 > | customViewProps          |    {}     | ViewProps                                                  | Custom view wrapper props                                                        |
-> | videoProps               |    {}     | VideoProperties                                            | To override video properties                                                     |
+> | videoProps               |    {}     | VideoNativeProps                                            | To override video properties                                                     |
 > | ref                      |    {}     | StoryRef                                                   | To access 'pause' story method and 'viewedStories' stories object (Single Story) |
 > | customViewStyle          |    {}     | ViewStyle                                                  | Style of custom view container                                                   |
 > | headerStyle              |    {}     | ViewStyle                                                  | Style of header container                                                        |
