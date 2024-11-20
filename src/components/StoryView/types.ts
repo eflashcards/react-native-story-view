@@ -10,6 +10,7 @@ import type {
   ViewProps,
   ViewStyle,
 } from 'react-native';
+import type { LinearGradientProps } from 'react-native-linear-gradient';
 import type {
   OnLoadData,
   OnProgressData,
@@ -20,6 +21,7 @@ export enum StroyTypes {
   Image = 'image',
   Video = 'video',
   Text = 'text',
+  GradientBackground = 'gradient',
 }
 
 export enum ClickPosition {
@@ -143,6 +145,7 @@ export interface StoryContainerBaseProps extends CommonProps {
   isShowReply?: boolean | undefined;
   renderHeaderComponent?: (callback: CallbackProps) => JSX.Element;
   renderFooterComponent?: (callback: CallbackProps) => JSX.Element;
+  renderGradientComponent?: (callback: CallbackProps) => JSX.Element;
   renderIndicatorComponent?: () => JSX.Element;
   userProfile?: UserProps | undefined;
   footerView?: FooterViewProps | undefined;
@@ -227,6 +230,8 @@ export type StoryType = {
   title?: string;
   showOverlay?: boolean;
   link?: string;
+  gradient?: LinearGradientProps;
+  previewLink?: string;
 };
 
 export type StoriesType = {

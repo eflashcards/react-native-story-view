@@ -29,3 +29,5 @@ export type FooterProps = TextInputProps & {
   onIconPress?: () => void | null;
   onSendTextPress?: () => void | null;
 };
+
+export type GradientProps = {};

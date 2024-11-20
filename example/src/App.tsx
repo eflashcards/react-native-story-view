@@ -1,3 +1,6 @@
+import "react-native-reanimated";
+import "react-native-gesture-handler";
+
 import React from 'react';
 import { LogBox, View } from 'react-native';
 import Routes from './navigation/Routes';

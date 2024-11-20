@@ -7,6 +7,32 @@ const stories = [
       'https://banner2.cleanpng.com/20190606/xch/kisspng-faded-music-mask-disc-jockey-darkside-5cf8dd7baf38c5.5844290115598134997177.jpg',
     stories: [
       {
+        id: 0,
+        type: 'gradient',
+        duration: 3,
+        isReadMore: true,
+        storyId: 1,
+        isSeen: false,
+        showOverlay: true,
+        title: "Hello",
+        gradient: {
+          colors: [
+            "#FF9A9E",
+            "#FFCBD5",
+            "#A8E063",
+            "#56AB2F"
+          ],
+          start: { x: 0, y: 0 },
+          end: { x: 1, y: 1 },
+          style: {
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 4,
+          }
+        }
+      },
+      {
         id: 1,
         url: 'https://i1.sndcdn.com/artworks-IrhmhgPltsdrwMu8-thZohQ-t500x500.jpg',
         type: 'image',
