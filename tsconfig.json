@@ -10,7 +10,7 @@
       "ESNext"
     ],
     "module": "ESNext",
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "Node",
     "noFallthroughCasesInSwitch": true,

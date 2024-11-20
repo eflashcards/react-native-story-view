@@ -1,5 +1,5 @@
 import {
-  MutableRefObject,
+  type MutableRefObject,
   useCallback,
   useEffect,
   useRef,
@@ -7,9 +7,9 @@ import {
 } from 'react';
 import {
   AppState,
-  AppStateStatus,
+  type AppStateStatus,
   Keyboard,
-  NativeTouchEvent,
+  type NativeTouchEvent,
   StyleSheet,
 } from 'react-native';
 import type { OnLoadData, OnProgressData } from 'react-native-video';
@@ -18,9 +18,9 @@ import { Colors, Metrics } from '../../../theme';
 import styles from '../styles';
 import {
   ClickPosition,
-  StoryContainerProps,
   StoryMode,
-  StroyTypes,
+  type StoryContainerProps,
+  type StroyTypes,
 } from '../types';
 
 const useStoryContainer = (
@@ -121,8 +121,8 @@ const useStoryContainer = (
     setPause(false);
     setDuration(
       props?.stories?.[progressIndex]?.duration ??
-        props?.maxVideoDuration ??
-        length?.duration
+      props?.maxVideoDuration ??
+      length?.duration
     );
   };
 
