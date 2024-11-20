@@ -14,7 +14,7 @@ import type { LinearGradientProps } from 'react-native-linear-gradient';
 import type {
   OnLoadData,
   OnProgressData,
-  VideoProperties,
+  ReactVideoProps,
 } from 'react-native-video';
 
 export enum StroyTypes {
@@ -105,7 +105,7 @@ export interface StoryViewProps {
   stories: StoryType[];
   showSourceIndicator?: boolean;
   sourceIndicatorProps?: ActivityIndicatorProps;
-  videoProps?: VideoProperties;
+  videoProps?: ReactVideoProps;
   index?: number;
   storyIndex?: number;
 }
@@ -161,7 +161,7 @@ export interface StoryContainerBaseProps extends CommonProps {
   storyContainerViewProps?: ViewProps;
   showSourceIndicator?: boolean;
   sourceIndicatorProps?: ActivityIndicatorProps;
-  videoProps?: VideoProperties;
+  videoProps?: ReactVideoProps;
   onChangePosition?: (
     progressIndex: number,
     userStoryIndex?: number
